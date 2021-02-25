@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -12,7 +12,7 @@ class ProductFactory extends Factory
      *
      * @var string
      */
-    protected $model = product::class;
+    protected $model = Product::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,12 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title'=> $this->faker->title,
+            'description'=>$this->faker->text,
+            'price'=>$this->faker->numberBetween(100, 25055055),
+            'vat'=>$this->faker->numberBetween(20,20),
+
+
         ];
     }
 }
