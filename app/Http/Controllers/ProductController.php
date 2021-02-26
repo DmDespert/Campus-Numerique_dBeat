@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('home', ['listProducts' => $products]);
     }
 
     /**
@@ -41,7 +43,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(product $product)
@@ -64,7 +66,7 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, product $product)
@@ -75,7 +77,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(product $product)

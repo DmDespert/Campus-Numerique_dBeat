@@ -397,10 +397,14 @@
 <header>
     <nav>accueil catalogue panier</nav>
     <div class="imageHeader">
+
     </div>
 
-
-
+    @foreach ($listProducts as $product)
+        <h2>{{ $product->title }}</h2>
+        <p>{{ $product->description }}</p>
+        <p>{{ $product->price }}</p>
+    @endforeach
 </header>
 
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
@@ -416,7 +420,9 @@
                 @endif
             @endauth
         </div>
+
     @endif
+
 </div>
 </body>
 </html>
