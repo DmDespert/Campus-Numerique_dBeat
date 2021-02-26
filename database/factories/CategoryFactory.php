@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -12,7 +12,7 @@ class CategoryFactory extends Factory
      *
      * @var string
      */
-    protected $model = category::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -22,6 +22,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
+            'title'=> $this->faker->title,
             //
         ];
     }
