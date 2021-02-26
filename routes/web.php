@@ -21,3 +21,11 @@ Route::get('/', function () {
 Route::get('/',
     [ProductController::class, 'index']
 );
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+Route::get('/product',
+    [ProductController::class, 'show']
+);

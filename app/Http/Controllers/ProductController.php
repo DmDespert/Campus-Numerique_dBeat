@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -48,7 +49,11 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        //
+        //Display one product
+        $product = Product::all()
+            ->where('id', '=', 1);
+
+        return view('product', ['product' => $product]);
     }
 
     /**
