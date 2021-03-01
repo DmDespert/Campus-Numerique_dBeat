@@ -395,7 +395,13 @@
 </head>
 <body class="antialiased">
 <header>
-    <nav>accueil catalogue panier</nav>
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/category/">Catalogue</a></li>
+            <li><a href="/cart/">Panier</a></li>
+        </ul>
+    </nav>
     <div class="imageHeader">
 
     </div>
@@ -404,6 +410,7 @@
         <h2>{{ $product->title }}</h2>
         <p>{{ $product->description }}</p>
         <p>{{ $product->price }}</p>
+        <a href="product/{{ $product->id }}">Voir le produit</a>
     @endforeach
 
 </header>
