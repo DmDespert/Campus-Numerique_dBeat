@@ -403,7 +403,10 @@
     {{ $product ?? '' }}
 
 </header>
-
+<form method="POST">
+    <button class="btn waves-effect waves-light" style="width:100%" type="submit" id="addcart">Ajouter au panier
+    </button>
+</form>
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
