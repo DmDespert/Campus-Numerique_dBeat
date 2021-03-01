@@ -395,12 +395,21 @@
 </head>
 <body class="antialiased">
 <header>
-    <nav>accueil catalogue panier</nav>
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/category/">Catalogue</a></li>
+            <li><a href="/cart/">Panier</a></li>
+        </ul>
+    </nav>
     <div class="imageHeader">
 
     </div>
-
-    {{ $product ?? '' }}
+    @foreach ($product as $viewProduct)
+        <h2>{{ $viewProduct->title }}</h2>
+        <p>{{ $viewProduct->description }}</p>
+        <p>{{ $viewProduct->price }}</p>
+    @endforeach
 
 </header>
 <form method="POST">
