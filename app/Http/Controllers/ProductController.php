@@ -47,11 +47,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(product $product, $id)
     {
         //Display one product
         $product = Product::all()
-            ->where('id', '=', 1);
+            ->where('id', '=', $id);
 
         return view('product', ['product' => $product]);
     }

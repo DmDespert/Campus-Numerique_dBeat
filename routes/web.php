@@ -26,6 +26,6 @@ Route::get('/product', function () {
     return view('product');
 });
 
-Route::get('/product',
+Route::get('/product/{id}',
     [ProductController::class, 'show']
 );
