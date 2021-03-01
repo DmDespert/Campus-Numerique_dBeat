@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,8 @@ Route::get('/product', function () {
 Route::get('/product/{id}',
     [ProductController::class, 'show']
 );
+
+Route::get('/cart',
+    [CartController::class, 'index']
+);
+
