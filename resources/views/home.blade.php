@@ -404,7 +404,9 @@
         <h2>{{ $product->title }}</h2>
         <p>{{ $product->description }}</p>
         <p>{{ $product->price }}</p>
+        <p>{{ $product->category_id }}</p>
     @endforeach
+
 </header>
 
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">

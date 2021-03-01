@@ -19,7 +19,9 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('price');
             $table->integer('vat');
+            $table->bigInteger("category_id")->unsigned();
             $table->timestamps();
+            //$table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
         });
     }
 

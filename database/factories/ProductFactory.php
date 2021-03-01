@@ -26,8 +26,7 @@ class ProductFactory extends Factory
             'description'=>$this->faker->text,
             'price'=>$this->faker->numberBetween(100, 25055055),
             'vat'=>$this->faker->numberBetween(20,20),
-
-
+            'category_id'=>$this->faker->numberBetween(1,5),
         ];
     }
 }
