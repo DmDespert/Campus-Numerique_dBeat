@@ -396,7 +396,11 @@ body {
 </head>
 <body class="antialiased">
 <header>
-    <nav>accueil catalogue panier</nav>
+    <nav><ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/category/">Catalogue</a></li>
+            <li><a href="/cart/">Panier</a></li>
+        </ul></nav>
     <div class="imageHeader">
 
     </div>
