@@ -406,11 +406,11 @@
 
     </div>
 
-    @foreach ($listProducts as $product)
+    @foreach ($products as $product)
         <h2>{{ $product->title }}</h2>
         <p>{{ $product->description }}</p>
         <p>{{ $product->price }}</p>
-        <a href="product/{{ $product->id }}">Voir le produit</a>
+        <a href="products/{{ $product->id }}">Voir le produit</a>
     @endforeach
 
 </header>

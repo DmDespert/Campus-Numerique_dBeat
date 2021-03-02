@@ -405,11 +405,11 @@
     <div class="imageHeader">
 
     </div>
-    @foreach ($listCategories as $categoryId)
-        <a href="/category/{{$categoryId->id}}">{{$categoryId->title}}</a>
+    @foreach ($categories as $category)
+        <a href="/category/{{$category->id}}">{{$category->title}}</a>
     @endforeach
 
-    @foreach ($productsByCategory as $product)
+    @foreach ($products as $product)
         <h2>{{ $product->title }}</h2>
         <p>{{ $product->description }}</p>
         <p>{{ $product->price }}</p>
