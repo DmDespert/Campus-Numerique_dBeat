@@ -398,7 +398,7 @@
     <nav>
         <ul>
             <li><a href="/">Accueil</a></li>
-            <li><a href="/category/">Catalogue</a></li>
+            <li><a href="/categories/">Catalogue</a></li>
             <li><a href="/cart/">Panier</a></li>
         </ul>
     </nav>
@@ -406,13 +406,14 @@
 
     </div>
     @foreach ($categories as $category)
-        <a href="/category/{{$category->id}}">{{$category->title}}</a>
+        <a href="/categories/{{$category->id}}">{{$category->title}}</a>
     @endforeach
 
     @foreach ($products as $product)
         <h2>{{ $product->title }}</h2>
         <p>{{ $product->description }}</p>
         <p>{{ $product->price }}</p>
+        <a href="/products/{{ $product->id }}">Voir le produit</a>
     @endforeach
 
 

@@ -25,11 +25,11 @@ Route::get('/products/{product}',
     [ProductController::class, 'show']
 );
 
-Route::get('/category',
+Route::get('/categories',
     [CategoryController::class, 'index']
 );
 
-Route::get('/category/{category}',
+Route::get('/categories/{category}',
     [CategoryController::class, 'show']
 );
 
