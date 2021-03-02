@@ -36,3 +36,7 @@ Route::get('/categories/{category}',
 Route::get('/cart',
     [CartController::class, 'index']
 );
+
+Route::post('add-to-cart/{id}',
+    [CartController::class, 'addToCart']
+);
