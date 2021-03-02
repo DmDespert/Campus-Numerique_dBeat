@@ -12,34 +12,17 @@ class CartController extends Controller
         return view('cart');
     }
 
-    public function addToCart($id)
+    public function store(Product $product, Request $request)
     {
-        $product = Product::findOrFail($id);
-
         $cart = session()->get('cart');
+        $quantity = $request->input('quantity');
 
-        if(!$cart) {
-
-            $cart = [
-                $id => [
-                    "title" => $product->title,
-                    "quantity" => 1,
-                    "price" => $product->price
-                ]
-            ];
-            session()->put('cart', $cart);
+        if (!$cart) {
+            $cart[$product->id] = 1;
+        } elseif (isset($cart[$product->id])) {
+            $cart[$product->id]+=$quantity;
         }
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-
-            session()->put('cart', $cart);
-        }
-
-        $cart[$id] = [
-            "title" => $product->title,
-            "quantity" => 1,
-            "price" => $product->price,
-        ];
         session()->put('cart', $cart);
+        return redirect()->route('cart.index');
     }
 }

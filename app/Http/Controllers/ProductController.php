@@ -49,8 +49,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //Display one product
-        $product = Product::find($product->id);
-
         return view('product', ['product' => $product]);
     }
 

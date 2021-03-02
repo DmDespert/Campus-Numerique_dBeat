@@ -413,10 +413,10 @@
 @if(session('cart'))
     @foreach(session('cart') as $id => $details)
         <h2>{{$details['title']}}</h2>
-        <p>{{$details['quantity']}}</p>
-        <p>{{$details['price']}}</p>
-        {{ $total = 0}}
-        {{$total += $details['price'] * $details['quantity']}}
+        <p>Quantité {{$details['quantity']}}</p>
+        <p>Prix unitaire {{$details['price']}} euros</p>
+        <?php $total = 0 ?>
+        <p>TOTAL -- {{$total += $details['price'] * $details['quantity']}} euros</p>
     @endforeach
 @endif
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">

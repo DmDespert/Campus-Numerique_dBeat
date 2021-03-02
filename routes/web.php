@@ -35,8 +35,8 @@ Route::get('/categories/{category}',
 
 Route::get('/cart',
     [CartController::class, 'index']
-);
+)->name('cart.index');
 
-Route::post('add-to-cart/{id}',
-    [CartController::class, 'addToCart']
-);
+Route::post('add-to-cart/{product}',
+    [CartController::class, 'store']
+)->name('cart.store');

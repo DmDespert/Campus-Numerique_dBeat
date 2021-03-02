@@ -410,10 +410,11 @@
     <p>{{ $product->description }}</p>
     <p>{{ $product->price }}</p>
 
+
 </header>
 <form method="POST" action="{{ url('add-to-cart/'.$product->id) }}">
     @csrf
-    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+    <input type="number" name="quantity" value="1">
     <button class="btn waves-effect waves-light" style="width:100%" type="submit" id="addcart">Ajouter au panier
     </button>
 </form>
