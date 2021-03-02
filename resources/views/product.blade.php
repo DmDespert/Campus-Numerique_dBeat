@@ -405,7 +405,7 @@
     <div class="imageHeader">
 
     </div>
-    @foreach ($product as $viewProduct)
+    @foreach ($product ?? '' as $viewProduct)
         <h2>{{ $viewProduct->title }}</h2>
         <p>{{ $viewProduct->description }}</p>
         <p>{{ $viewProduct->price }}</p>
