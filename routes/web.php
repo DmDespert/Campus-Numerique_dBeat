@@ -17,17 +17,9 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Route::get('/',
     [ProductController::class, 'index']
 );
-
-Route::get('/product', function () {
-    return view('product');
-});
 
 Route::get('/product/{id}',
     [ProductController::class, 'show']
