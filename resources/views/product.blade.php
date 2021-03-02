@@ -410,7 +410,6 @@
     <p>{{ $product->description }}</p>
     <p>{{ $product->price }}</p>
 
-
 </header>
 <form method="POST">
     <button class="btn waves-effect waves-light" style="width:100%" type="submit" id="addcart">Ajouter au panier

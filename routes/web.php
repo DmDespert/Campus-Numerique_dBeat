@@ -36,4 +36,3 @@ Route::get('/category/{category}',
 Route::get('/cart',
     [CartController::class, 'index']
 );
-
