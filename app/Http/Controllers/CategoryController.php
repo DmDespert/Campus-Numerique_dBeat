@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         $products = Product::all();
 
-        return view('category', ['listCategories' => $categories], ['productsByCategory' => $products]);
+        return view('category', ['categories' => $categories, 'products' => $products]);
     }
 
     /**
@@ -48,13 +48,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category, $id)
+    public function show(Category $category)
     {
         $categories = Category::all();
-        $products = Product::all()
-            ->where('category_id', '=', $id);
+        $products = Product::find($category);
 
-        return view('category', ['listCategories' => $categories], ['productsByCategory' => $products]);
+        return view('category', ['categories' => $categories], ['products' => $products]);
     }
 
     /**

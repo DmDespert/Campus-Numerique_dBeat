@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('home', ['listProducts' => $products]);
+        return view('home', ['products' => $products]);
     }
 
     /**
@@ -46,11 +46,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product, $id)
+    public function show(Product $product)
     {
         //Display one product
-        $product = Product::all()
-            ->where('id', '=', $id);
+        $product = Product::find($product->id);
 
         return view('product', ['product' => $product]);
     }
@@ -61,7 +60,7 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit(Product $product)
     {
         //
     }

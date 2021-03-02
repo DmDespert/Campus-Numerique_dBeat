@@ -405,11 +405,10 @@
     <div class="imageHeader">
 
     </div>
-    @foreach ($product ?? '' as $viewProduct)
-        <h2>{{ $viewProduct->title }}</h2>
-        <p>{{ $viewProduct->description }}</p>
-        <p>{{ $viewProduct->price }}</p>
-    @endforeach
+
+    <h2>{{ $product->title }}</h2>
+    <p>{{ $product->description }}</p>
+    <p>{{ $product->price }}</p>
 
 </header>
 <form method="POST">
