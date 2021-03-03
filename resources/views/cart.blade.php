@@ -410,15 +410,12 @@
 
 </header>
 <p>CECI EST UN PANIER</p>
-@if(session('cart'))
-    @foreach(session('cart') as $id => $details)
-        <h2>{{$details['title']}}</h2>
-        <p>Quantité {{$details['quantity']}}</p>
-        <p>Prix unitaire {{$details['price']}} euros</p>
-        <?php $total = 0 ?>
-        <p>TOTAL -- {{$total += $details['price'] * $details['quantity']}} euros</p>
+
+    @foreach($cart as $cartLine)
+        <h2>{{$cartLine['product']}}</h2>
+        <p>Quantité {{$cartLine['quantity']}}</p>
     @endforeach
-@endif
+
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
