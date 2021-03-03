@@ -413,7 +413,8 @@
 
     @foreach($cart as $cartLine)
         <h2>{{$cartLine['product']}}</h2>
-        <p>Quantité {{$cartLine['quantity']}}</p>
+        <label for="quantity">Quantité</label>
+        <input type="number" name="quantity" value="{{$cartLine['quantity']}}" min="0">
     @endforeach
 
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">

@@ -414,7 +414,7 @@
 </header>
 <form method="POST" action="{{ url('add-to-cart/'.$product->id) }}">
     @csrf
-    <input type="number" name="quantity" value="1">
+    <input type="number" name="quantity" value="1" min="1">
     <button class="btn waves-effect waves-light" style="width:100%" type="submit" id="addcart">Ajouter au panier
     </button>
 </form>

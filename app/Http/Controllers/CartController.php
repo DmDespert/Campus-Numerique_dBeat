@@ -53,3 +53,4 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 }
+
