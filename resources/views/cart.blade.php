@@ -412,11 +412,18 @@
 <p>CECI EST UN PANIER</p>
     @foreach($cart as $cartLine)
         <h2>{{$cartLine['product']->title}}</h2>
-        <form method="POST" action="{{ route('cart.destroy',['product' => $cartLine['product']->id ]) }}">
-            @method('DELETE')
+        <form method="POST" action="{{ route('cart.update',['product' => $cartLine['product']->id ]) }}">
+            @method('PATCH')
             @csrf
             <label for="quantity">Quantité</label>
             <input type="number" name="quantity" value="{{$cartLine['quantity']}}" min="0">
+        <button class="btn waves-effect waves-light" name="modify" style="width:100%" type="submit" id="modifycart">
+            Modifier la quantité
+        </button>
+        </form>
+        <form method="POST" action="{{ route('cart.destroy',['product' => $cartLine['product']->id ]) }}">
+            @method('DELETE')
+            @csrf
             <button class="btn waves-effect waves-light" name="remove" style="width:100%" type="submit" id="removecart">
                 Retirer du panier
             </button>

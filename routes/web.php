@@ -42,5 +42,9 @@ Route::post('add-to-cart/{product}',
 )->name('cart.store');
 
 Route::delete('remove-from-cart/{product}',
-     [CartController::class, 'destroy']
+    [CartController::class, 'destroy']
 )->name('cart.destroy');
+
+Route::patch('update-cart/{product}',
+    [CartController::class, 'update']
+)->name('cart.update');

@@ -41,24 +41,36 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    //public function update(Request $request)
-    //{
-    //    if ($request->id and $request->quantity) {
-    //        $cart = session()->get('cart');
-    //        $cart[$request->id]["quantity"] = $request->quantity;
-    //        session()->put('cart', $cart);
-    //        session()->flash('success', 'Cart updated successfully');
+    public function update(Product $product, Request $request)
+    {
+        $cart = session()->get('cart');
+        $quantity = $request->input('quantity');
+        $cart[$product->id] = $quantity;
+        if ($quantity == 0) {
+            return $this->destroy($product);
+        }
+        session()->put('cart', $cart);
+        return redirect()->route('cart.index');
+    }
+    // public function update(Request $request)
+    //    {
+    //        if($request->id and $request->quantity)
+    //        {
+    //            $cart = session()->get('cart');
+    //            $cart[$request->id]["quantity"] = $request->quantity;
+    //            session()->put('cart', $cart);
+    //            session()->flash('success', 'Cart updated successfully');
+    //        }
     //    }
-    //}
 
     public function destroy(Product $product)
     {
-            $cart = session()->get('cart');
-            if (isset($cart[$product->id])) {
-                unset($cart[$product->id]);
-                session()->put('cart', $cart);
-            }
-        return redirect()->route('cart.index');
+        $cart = session()->get('cart');
+        if (isset($cart[$product->id])) {
+            unset($cart[$product->id]);
+            session()->put('cart', $cart);
         }
+        return redirect()->route('cart.index');
     }
+}
 
