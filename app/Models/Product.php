@@ -13,4 +13,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getPriceWithVatAttribute()
+    {
+        return $this->price + ($this->price * $this->vat) / 100;
+    }
 }

@@ -12,19 +12,23 @@ class CartController extends Controller
         // Récupération des données du panier stockées en session
         $sessioncart = session('cart');
         $cart = [];
+        $totalCart = 0;
         if (isset($sessioncart)) {
             foreach ($sessioncart as $id => $qty) {
                 // Récupération de l'objet Product avec identifiant $id
                 $product = Product::find($id);
+                $totalPrice = $qty * $product->PriceWithVat;
                 // Construction du panier
                 $cart[] = [
                     'product' => $product,
-                    'quantity' => $qty
+                    'quantity' => $qty,
+                    'price' => $totalPrice
                 ];
+                $totalCart += $totalPrice;
             }
         }
         // Je passe le panier à la vue
-        return view('cart', ['cart' => $cart]);
+        return view('cart', ['cart' => $cart, 'totalCart' => $totalCart]);
     }
 
     public function store(Product $product, Request $request)
@@ -52,16 +56,6 @@ class CartController extends Controller
         session()->put('cart', $cart);
         return redirect()->route('cart.index');
     }
-    // public function update(Request $request)
-    //    {
-    //        if($request->id and $request->quantity)
-    //        {
-    //            $cart = session()->get('cart');
-    //            $cart[$request->id]["quantity"] = $request->quantity;
-    //            session()->put('cart', $cart);
-    //            session()->flash('success', 'Cart updated successfully');
-    //        }
-    //    }
 
     public function destroy(Product $product)
     {
