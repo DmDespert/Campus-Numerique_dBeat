@@ -12,34 +12,21 @@ class CartController extends Controller
         // Récupération des données du panier stockées en session
         $sessioncart = session('cart');
         $cart = [];
-        foreach ($sessioncart as $id => $qty) {
-            // Récupération de l'objet Product avec identifiant $id
-            $product = Product::find($id);
-            // Construction du panier
-            $cart[] = [
-                'product' => $product,
-                'quantity' => $qty
-            ];
+        if (isset($sessioncart)) {
+            foreach ($sessioncart as $id => $qty) {
+                // Récupération de l'objet Product avec identifiant $id
+                $product = Product::find($id);
+                // Construction du panier
+                $cart[] = [
+                    'product' => $product,
+                    'quantity' => $qty
+                ];
+            }
         }
         // Je passe le panier à la vue
         return view('cart', ['cart' => $cart]);
     }
 
-    /* public function index(Request $request)
-    {
-        $sessioncart = session()->get('cart');
-        if (isset($sessioncart)) {
-            foreach ($sessioncart as $request->id => $qt) {
-                $product = Product::find($request->id);
-                $cart[$request->id] = [
-                    "product" => $product,
-                    "quantity" => $qt,
-                ];
-            }
-        }
-        return view('cart', ['product' => $cart[$request->id]]);
-    }
-*/
     public function store(Product $product, Request $request)
     {
         $cart = session()->get('cart');
@@ -47,10 +34,31 @@ class CartController extends Controller
 
         if (isset($cart[$product->id])) {
             $cart[$product->id] += $quantity;
+        } else {
+            $cart[$product->id] = $quantity;
         }
-        $cart[$product->id] = $quantity;
         session()->put('cart', $cart);
         return redirect()->route('cart.index');
     }
-}
+
+    //public function update(Request $request)
+    //{
+    //    if ($request->id and $request->quantity) {
+    //        $cart = session()->get('cart');
+    //        $cart[$request->id]["quantity"] = $request->quantity;
+    //        session()->put('cart', $cart);
+    //        session()->flash('success', 'Cart updated successfully');
+    //    }
+    //}
+
+    public function destroy(Product $product)
+    {
+            $cart = session()->get('cart');
+            if (isset($cart[$product->id])) {
+                unset($cart[$product->id]);
+                session()->put('cart', $cart);
+            }
+        return redirect()->route('cart.index');
+        }
+    }
 

@@ -40,3 +40,7 @@ Route::get('/cart',
 Route::post('add-to-cart/{product}',
     [CartController::class, 'store']
 )->name('cart.store');
+
+Route::delete('remove-from-cart/{product}',
+     [CartController::class, 'destroy']
+)->name('cart.destroy');

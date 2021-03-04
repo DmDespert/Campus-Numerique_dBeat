@@ -410,13 +410,18 @@
 
 </header>
 <p>CECI EST UN PANIER</p>
-
     @foreach($cart as $cartLine)
-        <h2>{{$cartLine['product']}}</h2>
-        <label for="quantity">Quantité</label>
-        <input type="number" name="quantity" value="{{$cartLine['quantity']}}" min="0">
+        <h2>{{$cartLine['product']->title}}</h2>
+        <form method="POST" action="{{ route('cart.destroy',['product' => $cartLine['product']->id ]) }}">
+            @method('DELETE')
+            @csrf
+            <label for="quantity">Quantité</label>
+            <input type="number" name="quantity" value="{{$cartLine['quantity']}}" min="0">
+            <button class="btn waves-effect waves-light" name="remove" style="width:100%" type="submit" id="removecart">
+                Retirer du panier
+            </button>
+        </form>
     @endforeach
-
 <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
